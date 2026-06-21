@@ -41,11 +41,16 @@ def zutaten(marinara, margherita, funghi, salame, funghiesalame, caprese, cacioe
     ricotta=2*cipolle
     zwiebeln=cipolle
     zutatenliste=[tomaten, "g San Marzano Tomaten\n",fiordilatte, "g Fior di latte\n", basilikum, "Blätter Basilikum\n", parmigiano, "g Parmigiano Reggiano\n", champignons, "Champignons\n", knoblauch, "Knoblauchzehen\n", oregano, "Prisen Oregano\n", salami, "Scheiben vegetarische Salami\n", kirschtomaten, "Kirschtomaten\n", basilikumpesto, "EL Basilikumpesto\n", balsamico, "Schuss Aceto di balsamico\n", pecorino, "g Pecorino Romano\n", pfeffer, "schwarze Pfefferkörner\n", zucchini, "Zucchinischeiben\n", paprika, "rote Paprika\n", pestoRosso, "g Pesto Rosso\n", getrockneteTomaten, "getrocknete Tomaten\n", burrata, "Burrata\n", pinienkerne, "EL Pinienkerne\n", aubergine, "Scheiben Aubergine\n", ziegenkäse, "Scheiben Ziegenkäse\n", stracciatellaDiBurrata, "Portionen Stracciatella di burrata\n",ricotta, "EL Ricotta\n", zwiebeln, "Portionen karamellisierte Zwiebeln", olivenöl, "Schuss Olivenöl\n"]
-    ausgabe="Zutaten:\n"
+    pizzaliste=[marinara, "Pizza Marinara\n", margherita, "Pizza Margherita\n", funghi, 'Pizza Funghi\n', salame, 'Pizza Salame vegetariano\n', funghiesalame, 'Pizza Funghi e salame\n', caprese, 'Pizza Caprese\n', cacioepepe, 'Pizza Cacio e pepe\n', verdura, 'Pizza Verdura\n', quattrostagioni, 'Pizza Quattro stagioni\n', rossa, 'Pizza Rossa\n', parmigiana, 'Pizza Parmigiana\n', caprino, 'Pizza Caprino\n', stracciatella, 'Pizza Stracciatella di burrata\n', cipolle, 'Pizza Cipolle caramellate']
+    pizzen="Pizzen:\n"
+    for i in range(int(len(pizzaliste)/2)):
+        if pizzaliste[2*i]!=0:
+            pizzen+=str(pizzaliste[2*i])+' '+str(pizzaliste[2*i+1])
+    zutaten="Zutaten:\n"
     for i in range(int(len(zutatenliste)/2)):
         if zutatenliste[2*i]!=0:
-            ausgabe+=str(zutatenliste[2*i])+' '+str(zutatenliste[2*i+1])
-    return print(ausgabe)
+            zutaten+=str(zutatenliste[2*i])+' '+str(zutatenliste[2*i+1])
+    return print(pizzen + '\n\n' + zutaten)
 
 # zutaten(2,1,0,0,0,0,0,0,0,0,0,0,0,0)
 zutaten(marinara, margherita, funghi, salame, funghiesalame, caprese, cacioepepe, verdura, quattrostagioni, rossa, parmigiana, caprino, stracciatella, cipolle)
