@@ -5,7 +5,6 @@ hydration = 0.7
 poolishanteil = 0.3
 bigaanteil = 1
 rezeptmodus = 'an'
-pizza.pizza(teigart,teiglinganzahl,teiglinggewicht,hydration,poolishanteil,bigaanteil,rezeptmodus)
 
 
 def pizza(teigart,teiglinganzahl,teiglinggewicht,hydration,poolishanteil,bigaanteil,rezeptmodus):
@@ -102,34 +101,4 @@ def pizza(teigart,teiglinganzahl,teiglinggewicht,hydration,poolishanteil,bigaant
     
          
          
-         
-         
-def baguette(anzahl,rezeptmodus):
-    a = anzahl
-    mehl = a*950/4
-    wasser = a*730/4
-    salz = a*16/4
-    hefe = a*6/4
-    if rezeptmodus == 'aus':
-        ausgabe = print(anzahl,'Baguettes:','\n\nZutaten:\n    Mehl:',mehl,'g','\n    Wasser:',round(wasser),'g \n    Salz:', round(salz,2),'g \n    Hefe:',round(hefe,2))
-    elif rezeptmodus == 'an':
-        ausgabe = print(anzahl,'Baguettes:','\n\nZutaten:\n    Mehl:',mehl,'g','\n    Wasser:',round(wasser),'g \n    Salz:', round(salz,2),'g \n    Hefe:',round(hefe,2),'\nSalz kurz im Mehl verrühren. Hefe im\nWasser auflösen und alles kurz\nvermischen, bis alles Mehl aufgenommen\nist. Nun 8-10 h bei Raumtemperatur\nabgedeckt ruhen lassen. Teig mit viel Mehl sanft zu',anzahl,'Baguettes formen. Bei 250 ° C Ober- und Unterhitze für\n25 min backen.')
-    return ausgabe
-    
-    
-    
-def ciabatta(anzahl,rezeptmodus):
-    a = anzahl
-    mehl_poolish = a*200/2
-    wasser_poolish = mehl_poolish
-    hefe_poolish = a*1.5/2
-    mehl_haupt = a*300/2
-    wasser_haupt = a*200/2
-    hefe_haupt = a*15/2
-    salz = a*12/2
-    öl = a*30/2
-    if rezeptmodus == 'aus':
-        ausgabe = print(anzahl, 'Ciabatte\n\nPoolish:\n    Wasser (kalt):',round(wasser_poolish),'g\n    Mehl:',round(mehl_poolish),'g\n    Hefe:',round(hefe_poolish,2),'g','\n\nHauptteig:\n    Mehl:',round(mehl_haupt),'g\n    Wasser (zimmerwarm):',round(wasser_haupt),'g\n    Hefe:',round(hefe_haupt,2),'g\n    Salz:',round(salz,2),'g\n    Olivenöl:',round(öl),'ml')
-    elif rezeptmodus == 'an':
-        ausgabe = print(anzahl, 'Ciabatte\n\nPoolish:\n    Wasser (kalt):',round(wasser_poolish),'g\n    Mehl:',round(mehl_poolish),'g\n    Hefe:',round(hefe_poolish,2),'g','\n\nHauptteig:\n    Mehl:',round(mehl_haupt),'g\n    Wasser (zimmerwarm):',round(wasser_haupt),'g\n    Hefe:',round(hefe_haupt,2),'g\n    Salz:',round(salz,2),'g\n    Olivenöl:',round(öl),'ml')
-    return ausgabe
+pizza(teigart,teiglinganzahl,teiglinggewicht,hydration,poolishanteil,bigaanteil,rezeptmodus)
