@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  --paper: #F5F5F0;
+  --panel: #FFFFFF;
+  --ink: #1B1B18;
+  --ink-soft: #5C5A52;
+  --line: #D9D6CB;
+  --red: #B23A2E;
+  --green: #4B6B4D;
+
+  --font-display: 'Georgia', serif;
+  --font-mono: 'Georgia', normal;
+}
+
+/* ==========================================================================
+   Reset / base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+header {
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 20px;
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 6vw, 46px);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+header p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   Tab navigation
+   ========================================================================== */
+nav.tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 28px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+}
+
+nav.tabs button {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 13px 10px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+nav.tabs button.active {
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 var(--red);
+}
+
+nav.tabs button:hover:not(.active) {
+  color: var(--ink);
+}
+
+nav.tabs button:focus-visible,
+.toggle-row button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+section.panel[hidden] {
+  display: none;
+}
+
+.tool-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.tool-sub {
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin: 0 0 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Form fields
+   ========================================================================== */
+form.fields {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.field {
+  margin: 0 0 18px;
+  border: none;
+  padding: 0;
+}
+
+.field label,
+.field legend {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.field .unit {
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.field input[type="number"],
+.field select {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  padding: 11px 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.field input[type="range"] {
+  width: 100%;
+  min-height: 44px;
+  accent-color: var(--red);
+}
+
+.range-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.range-row span.val {
+  font-size: 13px;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.toggle-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--line);
+  width: max-content;
+}
+
+.toggle-row button {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 12px 14px;
+  min-height: 44px;
+  background: var(--panel);
+  border: none;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+.toggle-row button.active {
+  background: var(--ink);
+  color: var(--panel);
+}
+
+/* ==========================================================================
+   Output panel
+   ========================================================================== */
+.output {
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  padding: 22px 24px;
+  min-height: 120px;
+}
+
+.output h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.output h3:not(:first-child) {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.row .amt {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.row.sub .amt {
+  color: var(--green);
+}
+
+.note {
+  white-space: pre-line;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  line-height: 1.7;
+}
+
+.empty {
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Zutaten grid
+   ========================================================================== */
+.zut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 520px) {
+  .zut-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Small phones
+   ========================================================================== */
+@media (max-width: 480px) {
+  .wrap {
+    padding: 24px 16px 56px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  header {
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+  }
+
+  nav.tabs button {
+    font-size: 11.5px;
+    padding: 12px 6px;
+  }
+
+  .output {
+    padding: 18px 16px;
+  }
+
+  .row {
+    font-size: 13.5px;
+  }
+}
+
+.zut-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  padding: 6px 0;
+}
+
+.zut-field label {
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.zut-field input {
+  width: 56px;
+  min-height: 40px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-align: center;
+  padding: 5px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  margin-top: 48px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  text-align: center;
+}

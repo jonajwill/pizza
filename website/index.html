@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">  <title>Küchenrechner</title>
+  <meta name="theme-color" content="#F5F5F0">
+  <meta name="description" content="Drei Küchenrechner: Marmelade, Pizzateig und Zutaten.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <h1>Küchenrechner</h1>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Rechner auswählen">
+      <button type="button" class="tab-btn active" id="tab-pizzateig" data-tab="pizzateig"
+              role="tab" aria-selected="true" aria-controls="pizzateig">Pizzateig</button>
+      <button type="button" class="tab-btn" id="tab-marmelade" data-tab="marmelade"
+              role="tab" aria-selected="false" aria-controls="marmelade">Marmelade</button>
+      <button type="button" class="tab-btn" id="tab-zutaten" data-tab="zutaten"
+              role="tab" aria-selected="false" aria-controls="zutaten">Zutaten</button>
+    </nav>
+
+    <main>
+
+      <!-- PIZZATEIG -->
+      <section class="panel" id="pizzateig" role="tabpanel" aria-labelledby="tab-pizzateig">
+        <h2 class="tool-title">Pizzateigrechner</h2>
+        <p class="tool-sub">Poolish, direkter Teig, Biga oder Biga nach Capuano.</p>
+        <div class="grid">
+          <form class="fields" id="pizzateig-form">
+            <div class="field">
+              <label for="p-art">Teigart</label>
+              <select id="p-art" name="art">
+                <option value="poolish">Poolish</option>
+                <option value="direkter Teig">Direkter Teig</option>
+                <option value="biga" selected>Biga</option>
+                <option value="biga capvin">Biga nach Vincenzo Capuano</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p-anzahl">Teiglinge <span class="unit">(Anzahl)</span></label>
+              <input type="number" inputmode="numeric" id="p-anzahl" name="anzahl" value="6" min="1" step="1">            </div>
+            <div class="field">
+              <label for="p-gewicht">Teiglinggewicht <span class="unit">(g)</span></label>
+              <input type="number" inputmode="decimal" id="p-gewicht" name="gewicht" value="285" min="1" step="5">            </div>
+            <div class="field">
+              <div class="range-row">
+                <label for="p-hydration">Hydration</label>
+                <span class="val" id="p-hydration-val">70 %</span>
+              </div>
+              <input type="range" id="p-hydration" name="hydration" min="50" max="100" step="1" value="70">
+            </div>
+            <div class="field" id="p-poolish-field" hidden>
+              <div class="range-row">
+                <label for="p-poolishanteil">Poolishanteil</label>
+                <span class="val" id="p-poolishanteil-val">30 %</span>
+              </div>
+              <input type="range" id="p-poolishanteil" name="poolishanteil" min="10" max="100" step="1" value="30">
+            </div>
+            <div class="field" id="p-biga-field">
+              <div class="range-row">
+                <label for="p-bigaanteil">Bigaanteil</label>
+                <span class="val" id="p-bigaanteil-val">100 %</span>
+              </div>
+              <input type="range" id="p-bigaanteil" name="bigaanteil" min="10" max="100" step="1" value="100">
+            </div>
+            <fieldset class="field" id="p-modus-field" hidden>
+              <legend>Rezept</legend>
+              <div class="toggle-row" role="radiogroup" aria-label="Rezeptmodus">
+                <button type="button" data-mode="an" class="active" role="radio" aria-checked="true">mit Anleitung</button>
+                <button type="button" data-mode="aus" role="radio" aria-checked="false">nur Mengen</button>
+              </div>
+            </fieldset>
+          </form>
+          <div class="output" id="p-output" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- MARMELADE -->
+      <section class="panel" id="marmelade" role="tabpanel" aria-labelledby="tab-marmelade" hidden>
+        <h2 class="tool-title">Marmeladenrechner</h2>
+        <p class="tool-sub">Süßungsmittel und Geliermittel nach Fruchtmenge.</p>
+        <div class="grid">
+          <form class="fields" id="marmelade-form">
+            <div class="field">
+              <label for="m-frucht">Fruchtmenge <span class="unit">(g)</span></label>
+              <input type="number" inputmode="decimal" id="m-frucht" name="frucht" value="750" min="0" step="10">            </div>
+          </form>
+          <div class="output" id="m-output" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- ZUTATEN -->
+      <section class="panel" id="zutaten" role="tabpanel" aria-labelledby="tab-zutaten" hidden>
+        <h2 class="tool-title">Zutatenrechner</h2>
+        <p class="tool-sub">Anzahl je Pizza eintragen, Einkaufsliste erscheint unten.</p>
+        <div class="grid">
+          <form class="zut-grid" id="zutaten-form"></form>
+          <div class="output" id="z-output" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
